@@ -26,6 +26,11 @@ header {
   li {
     margin-left: 24px;
   }
+
+
+  @include responsive() {
+    display: none;
+  }
 }
 
 .logo {
@@ -90,4 +95,68 @@ header {
       }
     }
   }
+
+
+  @include responsive() {
+    display: none;
+  }
 }
+
+.bx {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  
+  position: relative;
+  display: none;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 20%;
+    // left: 15%;
+
+    border-radius: 20px;
+    background-color: $white;
+
+    transition: 1s ease;
+  }
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    width: 70%;
+    height: 10%;
+    top: 60%;
+    right: 0;
+
+    border-radius: 20px;
+    background-color: $white;
+
+    transition: 1s ease;
+  }
+
+  @include responsive() {
+    display: block;
+  }
+}
+
+#menu-hamburger:checked ~ label .bx::after {
+  background-color: $red;
+  transform: rotate(225deg);
+  
+  top: 60%;
+}
+
+#menu-hamburger:checked ~ label .bx::before {
+  background-color: $red;
+  transform: rotate(-225deg);
+  
+  width: 100%;
+  top: 60%;
+}
+
